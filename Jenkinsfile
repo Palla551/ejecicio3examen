@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   tools {
-    // Nombre dado a la instalación de Maven en "Tools configuration"
+    // Nombre dado a la instalaciÃ³n de Maven en "Tools configuration"
     maven "maven 3.6.3"
   }
 
@@ -10,7 +10,7 @@ pipeline {
     stage('Git fetch') { 
       steps {
         // Get some code from a GitHub repository
-        git 'https://github.com/Palla551/Sesion06jps105.git'
+        git 'https://github.com/Palla551/ejecicio3examen.git'
       }
     }
     stage('Compile, Test, Package') { 
