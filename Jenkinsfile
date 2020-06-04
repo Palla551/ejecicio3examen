@@ -44,6 +44,8 @@ pipeline {
            success {
              dependencyCheckPublisher pattern: '**/target/site/dependency-check-report.xml'
              recordIssues enabledForFailure: true, tool: checkStyle()
+             recordIssues enabledForFailure: true, tool: pmdParser()
+             recordIssues enabledForFailure: true, tool: cpd()
              recordIssues enabledForFailure: true, tool: findBugs()
              recordIssues enabledForFailure: true, tool: spotBugs()
             }
