@@ -12,7 +12,7 @@ class diaSemanaTest {
 		"5,5 -> viernes","6,6 -> sabado","7,7 -> domingo", "8,otro valor -> Error!"})
 	void testDiaSemana(int input, String expected) {
 		Ejercicio3 c = new Ejercicio3();
-		//assertEquals(c.diaSemana(input), expected);
+		assertEquals(c.diaSemana(input), expected);
 	}
 
 }
