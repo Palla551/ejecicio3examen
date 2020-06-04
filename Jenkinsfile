@@ -34,7 +34,7 @@ pipeline {
         }
       }
     }
-    stage ('Analysis') {
+     stage ('Analysis') {
        steps {
     	  // Warnings next generation plugin required
     	  sh "mvn -f pom.xml clean package site"
@@ -50,6 +50,17 @@ pipeline {
              recordIssues enabledForFailure: true, tool: spotBugs()
             }
        }
+    }
+    stage ('Documentation') {
+      steps {
+	    sh "mvn -f pom.xml javadoc:javadoc javadoc:aggregate" 
+      }
+      post{
+        success {
+          step $class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false 
+          publishHTML(target: [reportName: 'Maven Site', reportDir: 'target/site', reportFiles: 'index.html', keepAll: false]) 
+        }
+      }
     }
   }
 }
