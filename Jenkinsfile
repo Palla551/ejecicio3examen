@@ -23,9 +23,9 @@ pipeline {
         // Record the test results and archive the jar file.
         success {
           junit '**/target/surefire-reports/TEST-*.xml'
-          archiveArtifacts 'ejercicio3examen/target/*.jar'
+          archiveArtifacts '**/target/*.jar'
 		  jacoco(
-			 execPattern: 'ejercicio3examen/target/jacoco.exec',
+			 execPattern: '**/target/jacoco.exec',
 			 classPattern: '**/target/classes',
 			 sourcePattern: '**/src/',
 			 exclusionPattern: '**/test/'
@@ -44,8 +44,6 @@ pipeline {
            success {
              dependencyCheckPublisher pattern: '**/target/site/dependency-check-report.xml'
              recordIssues enabledForFailure: true, tool: checkStyle()
-             recordIssues enabledForFailure: true, tool: pmdParser()
-             recordIssues enabledForFailure: true, tool: cpd()
              recordIssues enabledForFailure: true, tool: findBugs()
              recordIssues enabledForFailure: true, tool: spotBugs()
             }
