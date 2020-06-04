@@ -51,16 +51,5 @@ pipeline {
             }
        }
     }
-    stage ('Documentation') {
-      steps {
-	    sh "mvn -f pom.xml javadoc:javadoc javadoc:aggregate" 
-      }
-      post{
-        success {
-          step $class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false 
-          publishHTML(target: [reportName: 'Maven Site', reportDir: 'target/site', reportFiles: 'index.html', keepAll: false]) 
-        }
-      }
-    }
   }
 }
