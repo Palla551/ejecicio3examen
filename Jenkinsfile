@@ -23,9 +23,9 @@ pipeline {
         // Record the test results and archive the jar file.
         success {
           junit '**/target/surefire-reports/TEST-*.xml'
-          archiveArtifacts '**/target/*.jar'
+          archiveArtifacts 'ejercicio3examen/target/*.jar'
 		  jacoco(
-			 execPattern: '**/target/jacoco.exec',
+			 execPattern: 'ejercicio3examen/target/jacoco.exec',
 			 classPattern: '**/target/classes',
 			 sourcePattern: '**/src/',
 			 exclusionPattern: '**/test/'
