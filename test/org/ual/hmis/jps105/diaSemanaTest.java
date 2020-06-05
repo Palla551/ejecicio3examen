@@ -7,11 +7,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class diaSemanaTest {
 
+	Ejercicio3 c = new Ejercicio3();
 	@ParameterizedTest // (name = "{index} => Con entrada ({0}) sale {1}")
 	@CsvSource({"1,1 -> lunes","2,2 -> martes","3,3 -> miercoles","4,4 -> jueves",
 		"5,5 -> viernes","6,6 -> sabado","7,7 -> domingo", "8,otro valor -> Error!"})
 	void testDiaSemana(int input, String expected) {
-		Ejercicio3 c = new Ejercicio3();
 		assertEquals(c.diaSemana(input), expected);
 	}
 
