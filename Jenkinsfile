@@ -1,3 +1,4 @@
+
 pipeline {
   agent any
 
@@ -10,7 +11,7 @@ pipeline {
     stage('Git fetch') { 
       steps {
         // Get some code from a GitHub repository
-        git 'https://github.com/Palla551/ejecicio3examen.git'
+        git 'https://github.com/Palla551/ejercicio3examen.git'
       }
     }
     stage('Compile, Test, Package') { 
@@ -32,7 +33,9 @@ pipeline {
 		   )
 		   publishCoverage adapters: [jacocoAdapter('**/target/site/jacoco/jacoco.xml')]
         }
-     stage ('Analysis') {
+      }
+    }
+    stage ('Analysis') {
        steps {
     	  // Warnings next generation plugin required
     	  sh "mvn -f pom.xml clean package site"
