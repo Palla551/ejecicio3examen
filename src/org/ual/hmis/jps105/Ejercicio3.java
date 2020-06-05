@@ -2,7 +2,7 @@ package org.ual.hmis.jps105;
 
 public class Ejercicio3 {
 	/**
-	 * @author juanj
+	 * Esto es un mensaje de prueba
 	 *
 	 */
 	public String diaSemana(int dia) {
