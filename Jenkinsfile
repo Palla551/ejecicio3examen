@@ -11,7 +11,7 @@ pipeline {
     stage('Git fetch') { 
       steps {
         // Get some code from a GitHub repository
-        git 'https://github.com/Palla551/ejercicio3examen.git'
+        git 'https://github.com/Palla551/ejecicio3examen.git'
       }
     }
     stage('Compile, Test, Package') { 
