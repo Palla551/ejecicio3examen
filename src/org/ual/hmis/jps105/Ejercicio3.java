@@ -1,7 +1,10 @@
 package org.ual.hmis.jps105;
 
 public class Ejercicio3 {
-	
+	/**
+	 * @author juanj
+	 *
+	 */
 	public String diaSemana(int dia) {
 		switch (dia) {
 		case 1: return "1 -> lunes";
