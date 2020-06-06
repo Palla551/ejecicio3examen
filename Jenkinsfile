@@ -43,12 +43,25 @@ pipeline {
        post {
          // Record the test results and archive the jar file.
            success {
+             dependencyCheckPublisher pattern: '**/target/site/dependency-check-report.xml'
              recordIssues enabledForFailure: true, tool: checkStyle()
+             recordIssues enabledForFailure: true, tool: pmdParser()
+             recordIssues enabledForFailure: true, tool: cpd()
              recordIssues enabledForFailure: true, tool: findBugs()
              recordIssues enabledForFailure: true, tool: spotBugs()
             }
        }
     }
-    
+    stage ('Documentation') {
+      steps {
+	    sh "mvn -f pom.xml javadoc:javadoc javadoc:aggregate" 
+      }
+      post{
+        success {
+          step $class: 'JavadocArchiver', javadocDir: 'target/site/apidocs', keepAll: false 
+          publishHTML(target: [reportName: 'Maven Site', reportDir: 'target/site', reportFiles: 'index.html', keepAll: false]) 
+        }
+      }
+    }
   }
 }
