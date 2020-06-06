@@ -43,7 +43,6 @@ pipeline {
        post {
          // Record the test results and archive the jar file.
            success {
-             dependencyCheckPublisher pattern: '**/target/site/dependency-check-report.xml'
              recordIssues enabledForFailure: true, tool: checkStyle()
              recordIssues enabledForFailure: true, tool: findBugs()
              recordIssues enabledForFailure: true, tool: spotBugs()
